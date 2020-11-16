@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+<head>
+
+</head>
+
+{% block content %}
+{% include '_messages.html' %}
+<div class="text-center h1 text-danger">Login</div>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" required data-validation-required-message="Please enter your email address.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="password" class="form-control" placeholder="Password" id="password" name="password" required data-validation-required-message="Password">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <p><input type=submit value="login" class="btn btn-info"></p>
+    </form>
+</div>
+
+{% endblock %}

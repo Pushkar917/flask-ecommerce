@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/register.css">
+    <script src="/static/js/check_password.js"></script>
+</head>
+{% block content %}
+<head>
+    <script src="/static/js/check_password.js"></script>
+</head>
+<div class="text-center h1 text-danger">Customer Registration Form</div>
+<div class="container">
+    {% include '_messages.html' %}
+    <form method="POST" enctype="multipart/form-data">
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="text" class="form-control" placeholder="username" id="username" name="username" required data-validation-required-message="Please enter your username.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" required data-validation-required-message="Please enter your email address.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="password" class="form-control" placeholder="Password" id="password" name="password" required data-validation-required-message="Password">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="password" class="form-control" placeholder="Confirm Password" id="confirm_password" name="confirm_password" onchange="check()">
+                <span id='message'></span>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="text" class="form-control" placeholder="Contact" id="contact" name="contact" required data-validation-required-message="Enter Your Contact No">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="text" class="form-control" placeholder="Country" id="country" name="country" required data-validation-required-message="Enter Country Name">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="text" class="form-control" placeholder="State" id="state" name="state" required data-validation-required-message="Enter State Name">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="text" class="form-control" placeholder="City" id="city" name="city" required data-validation-required-message="Enter City Name">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="text" class="form-control" placeholder="Address" id="address" name="address" required data-validation-required-message="Enter Address">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="text" class="form-control" placeholder="ZipCcde" id="zipcode" name="zipcode" required data-validation-required-message="Enter Zip Code">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="custom-file"style="margin-bottom: 10px";>
+            <input type="file" class="custom-file-input" name="image1" id="image1">
+            <label class="custom-file-label" for="image">Chose image to select for picture upload</label>
+        </div>
+        <div class="control-group">
+            <p><input type=submit value="Register" class="btn btn-info"></p>
+        </div>
+    </form>
+</div>
+{% endblock %}

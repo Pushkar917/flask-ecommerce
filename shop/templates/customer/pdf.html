@@ -1,0 +1,80 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Invoice PDF</title>
+</head>
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <b style="float:right;">Invoice: {{customer_order.invoice}}</b>
+            <br>
+            Customer Name: {{customer.username}}
+            <br>
+            Status: {{customer_order.status}}
+            <br>
+            Customer email : {{customer.email}}
+            <br>
+            Customer Contact: {{customer.contact}}
+            <br>
+            <br>
+
+            <table class="table table-sm">
+                <thead>
+                <th>Sr</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Discount %</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Total Discount</th>
+                <th>Subtotal</th>
+                </thead>
+                <tbody>
+                {% for key, product in customer_order.orders.items() %}
+                    {% set discount = "%0.2f" | format((product.discount/100) * product.price|float * product.quantity|float) %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.colors}}</td>
+                        <td>{{product.price}}</td>
+                        {% if product.discount > 0 %}
+                        <td>{{product.discount}} %</td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        <td>{{product.quantity}}</td>
+                        {% set subtotal = product.quantity | int * product.price %}
+                        <td>{{subtotal}}</td>
+                        <td>{{discount}}</td>
+                        <td>{{"%0.2f"|format((subtotal| float - discount|float))}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <table class="table table-sm">
+                <tr>
+                    <td width="35%"></td>
+                    <td colspan="3"><h5>Tax: Rs {{tax}}</h5></td>
+                    <td colspan="4"><h5>Grand Total: Rs {{grandtotal}}</h5></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/register.css">
+    <script src="/static/js/check_password.js"></script>
+</head>
+{% include '_messages.html' %}
+{% block content %}
+<head>
+    <script src="/static/js/check_password.js"></script>
+</head>
+<div class="text-center h1 text-danger">Register</div>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="text" class="form-control" placeholder="username" id="username" name="username" required data-validation-required-message="Please enter your username.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" required data-validation-required-message="Please enter your email address.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="password" class="form-control" placeholder="Password" id="password" name="password" required data-validation-required-message="Password">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <input type="password" class="form-control" placeholder="Confirm Password" id="confirm_password" name="confirm_password" onchange="check()">
+                <span id='message'></span>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <p><input type=submit value="Login" class="btn btn-info"></p>
+    </form>
+</div>
+
+{% endblock %}
